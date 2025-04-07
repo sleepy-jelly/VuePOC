@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper 
+	namespace="com.jelly.pb.vuepoc.user.service.impl.UserMapper">
+	
+
+	
+	<select id="selectUserByUserId" 
+			parameterType="com.jelly.pb.vuepoc.user.service.UserVO"  
+			resultType="com.jelly.pb.vuepoc.user.service.UserVO">
+		SELECT
+			USER_ID
+			,USER_PW
+			,USER_PERMISSION
+		FROM
+			TN_USER TU
+		WHERE
+			USER_ID = #{userId}	
+	</select>
+	
+	<insert id="insertUserByRegiste"
+			parameterType="com.jelly.pb.vuepoc.user.service.UserVO">
+		INSERT INTO TN_USER
+			(
+			 USER_ID, 
+			 USER_PW,
+			 USER_NM, 
+			 USER_EMAIL, 
+			 FRST_REGR_ID, 
+			 FRST_RER_DT,
+			 LAST_CHGR_ID,
+			 LAST_CHG_DT
+			 )
+		VALUES(
+			#{userId}, 
+			#{userPw}, 
+			#{userNm},
+			#{userEmail},
+			#{userId},
+			SySDate(), 
+			#{userId},
+			 SySDate() 
+			)
+	</insert>
+	
+</mapper>

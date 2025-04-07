@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper 
+	namespace="com.sleepyjelly.pb.bbs.service.impl.BbsMapper">
+	
+
+	<!-- @paging -->
+	<sql id="paging">
+		/* bbslistCount - 목록 갯수 조회 */
+		SELECT
+			COUNT(*)
+		FROM 
+			TN_BBS
+		<where>
+			<if test="searchKeyword != null and searchKeyword != ''">
+				<choose>
+					<when test="searchCondition == BT">
+						AND BBS_TITLE LIKE '%' || #{searchKeyword} || '%'
+					</when>
+					<when test="searchCondition == FRI">
+						AND FRST_REGR_ID LIKE '%' || #{searchKeyword} || '%'
+					</when>
+				</choose>
+			</if>
+			limit #{firstRow}, #{lastRow}
+		</where>
+	</sql>
+	
+	
+	
+</mapper>
+	
