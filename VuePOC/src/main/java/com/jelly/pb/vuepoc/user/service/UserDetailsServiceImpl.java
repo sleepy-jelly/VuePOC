@@ -43,14 +43,28 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		
 		log.info("userVO2 => userVO2 => {}",userVO);
 		
-		if(ObjectUtils.isEmpty(userVO.getSecurityAuthList())) {
+		if(ObjectUtils.isEmpty(userVO.getUserDvsnCd())) {		// if UserRole is null add Default Authority (USer)
 			List<SimpleGrantedAuthority> basicAuthorityList = new ArrayList<SimpleGrantedAuthority>();
 			SimpleGrantedAuthority basicAuth = new SimpleGrantedAuthority(UserRole.USER);
 			basicAuthorityList.add(basicAuth);
 			userVO.setSecurityAuthList(basicAuthorityList);
+			
+		}else if ("10".equals(userVO.getUserDvsnCd())) {		// UserRole IS USER
+			List<SimpleGrantedAuthority> basicAuthorityList = new ArrayList<SimpleGrantedAuthority>();
+			SimpleGrantedAuthority basicAuth = new SimpleGrantedAuthority(UserRole.USER);
+			basicAuthorityList.add(basicAuth);
+			userVO.setSecurityAuthList(basicAuthorityList);
+			
+		}else if ("90".equals(userVO.getUserDvsnCd())) {		// UserRole IS ADMIN
+			List<SimpleGrantedAuthority> basicAuthorityList = new ArrayList<SimpleGrantedAuthority>();
+			SimpleGrantedAuthority basicUserAuth = new SimpleGrantedAuthority(UserRole.USER);
+			SimpleGrantedAuthority basicAdminAuth = new SimpleGrantedAuthority(UserRole.ADMIN);
+			basicAuthorityList.add(basicUserAuth);
+			basicAuthorityList.add(basicAdminAuth);
+			userVO.setSecurityAuthList(basicAuthorityList);
+			
 		}
 		log.info("userVO3 => userVO3 => {}",userVO);
-
 		return new org.springframework.security.core.userdetails.User(
 			 userVO.getUserId(),
 			 userVO.getUserPw(),
