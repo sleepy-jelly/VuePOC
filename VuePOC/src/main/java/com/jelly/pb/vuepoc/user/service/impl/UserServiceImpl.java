@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserVO selectUserByUserId(UserVO userVO) throws Exception {
+        log.info("selectUserByUserId ->  userVO {}", userVO);
         UserVO foundUserVO = userMapper.selectUserByUserId(userVO);
         log.info("selectUserByUserId ->  foundedUserVO {}", foundUserVO);
         return foundUserVO;

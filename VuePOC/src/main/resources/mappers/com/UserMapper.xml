@@ -4,14 +4,13 @@
 	namespace="com.jelly.pb.vuepoc.user.service.impl.UserMapper">
 	
 
-	
 	<select id="selectUserByUserId" 
 			parameterType="com.jelly.pb.vuepoc.user.service.UserVO"  
 			resultType="com.jelly.pb.vuepoc.user.service.UserVO">
 		SELECT
 			USER_ID
 			,USER_PW
-			,USER_PERMISSION
+			,USER_DVSN_CD
 		FROM
 			TN_USER TU
 		WHERE
@@ -20,27 +19,43 @@
 	
 	<insert id="insertUserByRegiste"
 			parameterType="com.jelly.pb.vuepoc.user.service.UserVO">
-		INSERT INTO TN_USER
-			(
-			 USER_ID, 
-			 USER_PW,
-			 USER_NM, 
-			 USER_EMAIL, 
-			 FRST_REGR_ID, 
-			 FRST_RER_DT,
-			 LAST_CHGR_ID,
-			 LAST_CHG_DT
-			 )
-		VALUES(
-			#{userId}, 
-			#{userPw}, 
-			#{userNm},
-			#{userEmail},
-			#{userId},
-			SySDate(), 
-			#{userId},
-			 SySDate() 
-			)
+		INSERT INTO 
+			TN_USER
+				(
+					USER_ID, 
+					USER_PW,
+					USER_NM, 
+					USER_AFLT_NM,
+				    USER_MBL_TELNO,
+				    USER_EML_ADDR,
+				    USER_STTS_CD,
+				    USER_DVSN_CD,
+				    UNTY_TRMS_AGRE_YN,
+				    JOIN_YMD,
+				    LAST_STTS_CHG_DT,
+					FRST_REGR_ID, 
+					FRST_REG_DT,
+					LAST_CHGR_ID,
+					LAST_CHG_DT
+				)
+			VALUES
+				(
+					#{userId} 
+					,#{userPw}
+					,#{userNm}
+					,#{userAfltNm}
+					,#{userMblTelno}
+					,#{userEmlAddr}
+					,'200'
+					,'10'
+					,#{untyTrmsAgreYn}
+					,TO_CHAR(NOW(), 'YYYYMMDD')
+					,SYSDATE()
+					,#{userId}
+					,SYSDATE()
+					,#{userId}
+					,SYSDATE() 
+				)
 	</insert>
 	
 </mapper>
