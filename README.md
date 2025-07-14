@@ -33,7 +33,19 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 
 See [Vite Configuration Reference](https://vite.dev/config/).
 
-## Project Setup
+## Clone Git
+
+```sh
+git clone https://github.com/sleepy-jelly/VuePOC.git
+```
+
+## Project Setup 
+
+```sh
+cd /VuePOC/src/main
+/VuePOC-Vue
+```
+
 
 ```sh
 npm install
