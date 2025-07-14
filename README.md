@@ -69,3 +69,9 @@ npm run build
 ```sh
 npm run lint
 ```
+
+
+if you having com.openai.errors.*: 
+check here
+https://platform.openai.com/docs/guides/error-codes/api-errors.
+
