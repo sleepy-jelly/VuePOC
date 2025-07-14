@@ -42,8 +42,7 @@ git clone https://github.com/sleepy-jelly/VuePOC.git
 ## Project Setup 
 
 ```sh
-cd /VuePOC/src/main
-/VuePOC-Vue
+cd /VuePOC/src/main/VuePOC-Vue
 ```
 
 
