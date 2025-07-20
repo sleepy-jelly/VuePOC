@@ -29,7 +29,7 @@ import reactor.core.publisher.Flux;
 
 @Slf4j
 @RestController 
-@RequestMapping("/NeoAI")
+@RequestMapping("/OpenAI")
 @RequiredArgsConstructor
 public class OpenAIController extends BaseController {
 
