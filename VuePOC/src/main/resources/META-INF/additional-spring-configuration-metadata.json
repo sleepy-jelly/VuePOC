@@ -1,0 +1,19 @@
+{"properties": [
+  {
+    "name": "jwt.secret",
+    "type": "java.lang.String",
+    "description": "Secret key used for signing JWT tokens",
+    "defaultValue": "404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970"
+  },
+  {
+    "name": "jwt.expiration",
+    "type": "java.lang.Long",
+    "description": "JWT token expiration time in milliseconds",
+    "defaultValue": "86400000"
+  },
+  {
+    "name": "api.key.openai",
+    "type": "java.lang.String",
+    "description": "A description for 'api.key.openai'"
+  }
+]}
